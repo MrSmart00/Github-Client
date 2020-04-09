@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		C47E92EC243E147900B1D9BD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C47E92EB243E147900B1D9BD /* Preview Assets.xcassets */; };
 		C47E92EF243E147900B1D9BD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C47E92ED243E147900B1D9BD /* LaunchScreen.storyboard */; };
 		C47E92FA243E147900B1D9BD /* Github_ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47E92F9243E147900B1D9BD /* Github_ClientTests.swift */; };
+		C47E9306243E182000B1D9BD /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = C47E9305243E182000B1D9BD /* Apollo */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C47E9306243E182000B1D9BD /* Apollo in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -123,6 +125,9 @@
 			dependencies = (
 			);
 			name = "Github-Client";
+			packageProductDependencies = (
+				C47E9305243E182000B1D9BD /* Apollo */,
+			);
 			productName = "Github-Client";
 			productReference = C47E92DF243E147800B1D9BD /* Github-Client.app */;
 			productType = "com.apple.product-type.application";
@@ -173,6 +178,9 @@
 				Base,
 			);
 			mainGroup = C47E92D6243E147800B1D9BD;
+			packageReferences = (
+				C47E9304243E182000B1D9BD /* XCRemoteSwiftPackageReference "apollo-ios" */,
+			);
 			productRefGroup = C47E92E0243E147800B1D9BD /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -473,6 +481,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C47E9304243E182000B1D9BD /* XCRemoteSwiftPackageReference "apollo-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:apollographql/apollo-ios.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.25.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C47E9305243E182000B1D9BD /* Apollo */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C47E9304243E182000B1D9BD /* XCRemoteSwiftPackageReference "apollo-ios" */;
+			productName = Apollo;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C47E92D7243E147800B1D9BD /* Project object */;
 }
