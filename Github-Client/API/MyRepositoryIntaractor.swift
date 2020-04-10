@@ -45,22 +45,30 @@ extension MyRepositoryInteractor {
         }
 
         static func convert(_ node: GraphQL.MyRepositoriesQuery.Data.Viewer.Repository.Node) -> Repository {
-            return .init(name: node.name,
+            return .init(id: node.id,
+                         name: node.name,
                          isPrivate: node.isPrivate,
-                         updateAt: Date(),
-                         language: node.languages?.nodes?.first?.flatMap(convert))
+                         updateAt: convert(node.updatedAt),
+                         language: node.languages?.nodes?.first?.flatMap(convert),
+                         path: node.resourcePath)
         }
 
         static func convert(_ node: GraphQL.MyRepositoriesQuery.Data.Viewer.Repository.Node.Language.Node) -> Language {
-            return .init(name: node.name, color: node.color.map(convert) ?? (red: 1, green: 1, blue: 1))
+            return .init(name: node.name, color: node.color.map(convert) ?? .default)
+        }
+
+        static func convert(_ date: String) -> Date {
+            let formatter: DateFormatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ" // 2020-04-10T16:34:46Z
+            return formatter.date(from: date)!
         }
 
         static func convert(_ hex: String) -> ColorInfo {
             let v = Int("000000" + hex.trimmingCharacters(in: .init(charactersIn: "#")), radix: 16) ?? 0
-            let r = Float(v / Int(powf(256, 2)) % 256) / 255
-            let g = Float(v / Int(powf(256, 1)) % 256) / 255
-            let b = Float(v / Int(powf(256, 0)) % 256) / 255
-            return (r, g, b)
+            let r = Double(v / Int(powf(256, 2)) % 256) / 255
+            let g = Double(v / Int(powf(256, 1)) % 256) / 255
+            let b = Double(v / Int(powf(256, 0)) % 256) / 255
+            return .init(red: r, green: g, blue: b)
         }
     }
 }
