@@ -13,13 +13,18 @@ struct RepositoryList: View {
 
     var body: some View {
         NavigationView {
-            List(interactor.repositories) {
+            List(interactor.viewer?.repositories ?? []) {
                 RepositoryCell(repository: $0)
                     .frame(height: 70.0)
             }
             .onAppear { UITableView.appearance().separatorColor = .clear }
             .onDisappear { UITableView.appearance().separatorStyle = .singleLine }
-            .navigationBarTitle(Text("Hello, World!"))
+            .navigationBarItems(
+                leading: NetworkImage(url: interactor.viewer?.avaterImageURL)
+                    .frame(width: 32, height: 32)
+                    .cornerRadius(22)
+            )
+            .navigationBarTitle(Text(interactor.viewer?.name ?? "Hello, World!"))
         }
     }
 }

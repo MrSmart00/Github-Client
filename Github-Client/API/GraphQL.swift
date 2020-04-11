@@ -13,6 +13,9 @@ public enum GraphQL {
       query MyRepositories {
         viewer {
           __typename
+          avatarUrl(size: 128)
+          id
+          login
           repositories(first: 100, orderBy: {field: CREATED_AT, direction: DESC}) {
             __typename
             nodes {
@@ -73,6 +76,9 @@ public enum GraphQL {
 
         public static let selections: [GraphQLSelection] = [
           GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("avatarUrl", arguments: ["size": 128], type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("login", type: .nonNull(.scalar(String.self))),
           GraphQLField("repositories", arguments: ["first": 100, "orderBy": ["field": "CREATED_AT", "direction": "DESC"]], type: .nonNull(.object(Repository.selections))),
         ]
 
@@ -82,8 +88,8 @@ public enum GraphQL {
           self.resultMap = unsafeResultMap
         }
 
-        public init(repositories: Repository) {
-          self.init(unsafeResultMap: ["__typename": "User", "repositories": repositories.resultMap])
+        public init(avatarUrl: String, id: GraphQLID, login: String, repositories: Repository) {
+          self.init(unsafeResultMap: ["__typename": "User", "avatarUrl": avatarUrl, "id": id, "login": login, "repositories": repositories.resultMap])
         }
 
         public var __typename: String {
@@ -92,6 +98,35 @@ public enum GraphQL {
           }
           set {
             resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        /// A URL pointing to the user's public avatar.
+        public var avatarUrl: String {
+          get {
+            return resultMap["avatarUrl"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "avatarUrl")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        /// The username used to login.
+        public var login: String {
+          get {
+            return resultMap["login"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "login")
           }
         }
 

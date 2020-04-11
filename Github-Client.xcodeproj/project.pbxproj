@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C40272FE243F82D50036541F /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40272FD243F82D40036541F /* Secret.swift */; };
+		C40D04F124420ADD00063037 /* NetworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40D04F024420ADD00063037 /* NetworkImage.swift */; };
 		C4177D712440DC7F00527A23 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4177D702440DC7F00527A23 /* RepositoryCell.swift */; };
+		C45195AD2441F0FA00C80532 /* Viewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45195AC2441F0FA00C80532 /* Viewer.swift */; };
 		C46B98AC243F6C47005C3ADD /* GraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B98AB243F6C47005C3ADD /* GraphQL.swift */; };
 		C46B98AF243F6EDB005C3ADD /* MyRepositoryIntaractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B98AE243F6EDA005C3ADD /* MyRepositoryIntaractor.swift */; };
 		C46B98B1243F73E4005C3ADD /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B98B0243F73E4005C3ADD /* Repository.swift */; };
@@ -35,7 +37,9 @@
 
 /* Begin PBXFileReference section */
 		C40272FD243F82D40036541F /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		C40D04F024420ADD00063037 /* NetworkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImage.swift; sourceTree = "<group>"; };
 		C4177D702440DC7F00527A23 /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
+		C45195AC2441F0FA00C80532 /* Viewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Viewer.swift; sourceTree = "<group>"; };
 		C46B98AB243F6C47005C3ADD /* GraphQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQL.swift; sourceTree = "<group>"; };
 		C46B98AE243F6EDA005C3ADD /* MyRepositoryIntaractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRepositoryIntaractor.swift; sourceTree = "<group>"; };
 		C46B98B0243F73E4005C3ADD /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
@@ -75,6 +79,7 @@
 		C4177D6F2440DC3100527A23 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C40D04F024420ADD00063037 /* NetworkImage.swift */,
 				C4177D702440DC7F00527A23 /* RepositoryCell.swift */,
 				C48C05642440FB42008EF81B /* RepositoryList.swift */,
 			);
@@ -95,6 +100,7 @@
 			children = (
 				C46B98B0243F73E4005C3ADD /* Repository.swift */,
 				C46B98B4243F7478005C3ADD /* Language.swift */,
+				C45195AC2441F0FA00C80532 /* Viewer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -265,7 +271,9 @@
 				C46B98B5243F7478005C3ADD /* Language.swift in Sources */,
 				C48C05652440FB42008EF81B /* RepositoryList.swift in Sources */,
 				C40272FE243F82D50036541F /* Secret.swift in Sources */,
+				C45195AD2441F0FA00C80532 /* Viewer.swift in Sources */,
 				C46B98AC243F6C47005C3ADD /* GraphQL.swift in Sources */,
+				C40D04F124420ADD00063037 /* NetworkImage.swift in Sources */,
 				C46B98B1243F73E4005C3ADD /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

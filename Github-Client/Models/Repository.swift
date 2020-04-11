@@ -9,10 +9,6 @@
 import Foundation
 
 struct Repository: Hashable, Identifiable, Equatable {
-    static func == (lhs: Repository, rhs: Repository) -> Bool {
-        return lhs.id == rhs.id
-    }
-
     let id: String
     let name: String
     let isPrivate: Bool

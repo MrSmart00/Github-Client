@@ -11,30 +11,6 @@ import SwiftUI
 struct RepositoryCell: View {
     let repository: Repository
 
-//    var body: some View {
-//        RoundedRectangle(cornerRadius: 10)
-//            .fill(createGradient(colorInfo: repository.language?.color))
-//            .frame(maxWidth: .infinity, maxHeight: .infinity)
-//            .border(Color.gray, width: 1)
-//            .overlay(
-//                VStack(alignment: .leading, spacing: 3.0) {
-//                    Text(repository.name)
-//                        .font(.headline)
-//                    Text(repository.path)
-//                        .font(.subheadline)
-//                    HStack(alignment: .center) {
-//                        Text(repository.language?.name ?? "")
-//                            .font(.caption)
-//                        Spacer()
-//                        Text(repository.updateText)
-//                            .font(.caption)
-//                            .foregroundColor(Color.gray)
-//                    }
-//                }
-//                .padding(.horizontal, 10.0)
-//            )
-//    }
-
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
             .fill(createGradient(colorInfo: repository.language?.color))

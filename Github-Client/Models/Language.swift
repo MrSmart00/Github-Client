@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ColorInfo: Hashable {
+struct ColorInfo: Hashable, Equatable {
     let red: Double
     let green: Double
     let blue: Double
@@ -17,10 +17,6 @@ struct ColorInfo: Hashable {
 }
 
 struct Language: Hashable, Equatable {
-    static func == (lhs: Language, rhs: Language) -> Bool {
-        return lhs.name == rhs.name
-    }
-
     let name: String
     let color: ColorInfo
 }

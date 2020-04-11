@@ -19,7 +19,7 @@ class MyRepositoryInteractor: ObservableObject {
         return .init(networkTransport: transport)
     }()
 
-    @Published var repositories: [Repository] = []
+    @Published var viewer: Viewer? = nil
 
     init() {
         fetch()
@@ -27,19 +27,24 @@ class MyRepositoryInteractor: ObservableObject {
 
     func fetch() {
         apollo.fetch(query: GraphQL.MyRepositoriesQuery()) {
-            guard case .success(let response) = $0 else {
+            guard case .success(let response) = $0, let viewer = response.data?.viewer else {
                 return
             }
-            guard let nodes = response.data?.viewer.repositories.nodes else {
-                return
-            }
-            self.repositories = Translator.convert(nodes.compactMap { $0 })
+            self.viewer = Translator.convert(viewer)
         }
     }
 }
 
 extension MyRepositoryInteractor {
     enum Translator {
+        static func convert(_ viewer: GraphQL.MyRepositoriesQuery.Data.Viewer) -> Viewer {
+            let nodes = viewer.repositories.nodes?.compactMap { $0 } ?? []
+            return Viewer(id: viewer.id,
+                         avaterImageURL: URL(string: viewer.avatarUrl)!,
+                         name: viewer.login,
+                         repositories: nodes.map(convert))
+        }
+
         static func convert(_ nodes: [GraphQL.MyRepositoriesQuery.Data.Viewer.Repository.Node]) -> [Repository] {
             return nodes.map(convert)
         }
