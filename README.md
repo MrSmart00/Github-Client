@@ -10,3 +10,10 @@ enum Secret {
 ```
 `<YOUR GITHUB TOKEN>` に先ほど作成したトークンを設定して、
 上記enumをどこからでも読める位置に追記してください。
+
+## やった事
+
+- [x] Github GraphQLから情報を取得する
+- [x] 自身のRepository一覧を表示する
+- [ ] Repositoryを検索できる
+- [ ] 選択したRepositoryの内容を表示する
