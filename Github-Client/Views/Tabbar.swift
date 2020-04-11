@@ -14,8 +14,13 @@ struct Tabbar: View {
             RepositoryList()
                 .tabItem {
                     VStack {
-                        Image(systemName: "a")
                         Text("My Repository")
+                    }
+                }
+            SearchView()
+                .tabItem {
+                    VStack {
+                        Text("Search")
                     }
                 }
         }

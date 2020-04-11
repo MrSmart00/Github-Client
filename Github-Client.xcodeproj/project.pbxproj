@@ -10,6 +10,10 @@
 		C40272FE243F82D50036541F /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40272FD243F82D40036541F /* Secret.swift */; };
 		C40D04F124420ADD00063037 /* NetworkImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40D04F024420ADD00063037 /* NetworkImage.swift */; };
 		C40D04F324421FD700063037 /* Tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40D04F224421FD700063037 /* Tabbar.swift */; };
+		C40D04F52442217C00063037 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40D04F42442217C00063037 /* SearchView.swift */; };
+		C40D04F72442236100063037 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40D04F62442236100063037 /* SearchBar.swift */; };
+		C40D04F9244226E100063037 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40D04F8244226E100063037 /* SearchInteractor.swift */; };
+		C40D04FC2442359700063037 /* UIApplication+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C40D04FB2442359700063037 /* UIApplication+Extension.swift */; };
 		C4177D712440DC7F00527A23 /* RepositoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4177D702440DC7F00527A23 /* RepositoryCell.swift */; };
 		C45195AD2441F0FA00C80532 /* Viewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C45195AC2441F0FA00C80532 /* Viewer.swift */; };
 		C46B98AC243F6C47005C3ADD /* GraphQL.swift in Sources */ = {isa = PBXBuildFile; fileRef = C46B98AB243F6C47005C3ADD /* GraphQL.swift */; };
@@ -40,6 +44,10 @@
 		C40272FD243F82D40036541F /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
 		C40D04F024420ADD00063037 /* NetworkImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkImage.swift; sourceTree = "<group>"; };
 		C40D04F224421FD700063037 /* Tabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabbar.swift; sourceTree = "<group>"; };
+		C40D04F42442217C00063037 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		C40D04F62442236100063037 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		C40D04F8244226E100063037 /* SearchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
+		C40D04FB2442359700063037 /* UIApplication+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+Extension.swift"; sourceTree = "<group>"; };
 		C4177D702440DC7F00527A23 /* RepositoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryCell.swift; sourceTree = "<group>"; };
 		C45195AC2441F0FA00C80532 /* Viewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Viewer.swift; sourceTree = "<group>"; };
 		C46B98AB243F6C47005C3ADD /* GraphQL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphQL.swift; sourceTree = "<group>"; };
@@ -78,6 +86,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C40D04FA2442357F00063037 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C40D04FB2442359700063037 /* UIApplication+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C4177D6F2440DC3100527A23 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +101,8 @@
 				C4177D702440DC7F00527A23 /* RepositoryCell.swift */,
 				C48C05642440FB42008EF81B /* RepositoryList.swift */,
 				C40D04F224421FD700063037 /* Tabbar.swift */,
+				C40D04F42442217C00063037 /* SearchView.swift */,
+				C40D04F62442236100063037 /* SearchBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -93,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				C46B98AE243F6EDA005C3ADD /* MyRepositoryIntaractor.swift */,
+				C40D04F8244226E100063037 /* SearchInteractor.swift */,
 				C46B98AB243F6C47005C3ADD /* GraphQL.swift */,
 			);
 			path = API;
@@ -129,6 +148,7 @@
 		C47E92E1243E147800B1D9BD /* Github-Client */ = {
 			isa = PBXGroup;
 			children = (
+				C40D04FA2442357F00063037 /* Extensions */,
 				C4177D6F2440DC3100527A23 /* Views */,
 				C46B98AD243F6EA6005C3ADD /* Models */,
 				C46B98AA243F6C31005C3ADD /* API */,
@@ -269,12 +289,16 @@
 			files = (
 				C4177D712440DC7F00527A23 /* RepositoryCell.swift in Sources */,
 				C47E92E3243E147800B1D9BD /* AppDelegate.swift in Sources */,
+				C40D04FC2442359700063037 /* UIApplication+Extension.swift in Sources */,
 				C47E92E5243E147800B1D9BD /* SceneDelegate.swift in Sources */,
 				C40D04F324421FD700063037 /* Tabbar.swift in Sources */,
 				C46B98AF243F6EDB005C3ADD /* MyRepositoryIntaractor.swift in Sources */,
 				C46B98B5243F7478005C3ADD /* Language.swift in Sources */,
 				C48C05652440FB42008EF81B /* RepositoryList.swift in Sources */,
+				C40D04F72442236100063037 /* SearchBar.swift in Sources */,
 				C40272FE243F82D50036541F /* Secret.swift in Sources */,
+				C40D04F9244226E100063037 /* SearchInteractor.swift in Sources */,
+				C40D04F52442217C00063037 /* SearchView.swift in Sources */,
 				C45195AD2441F0FA00C80532 /* Viewer.swift in Sources */,
 				C46B98AC243F6C47005C3ADD /* GraphQL.swift in Sources */,
 				C40D04F124420ADD00063037 /* NetworkImage.swift in Sources */,
