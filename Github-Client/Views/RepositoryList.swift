@@ -15,7 +15,7 @@ struct RepositoryList: View {
         NavigationView {
             List(interactor.viewer?.repositories ?? []) {
                 RepositoryCell(repository: $0)
-                    .frame(height: 70.0)
+                    .frame(height: 90.0)
             }
             .onAppear { UITableView.appearance().separatorColor = .clear }
             .onDisappear { UITableView.appearance().separatorStyle = .singleLine }
