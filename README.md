@@ -19,3 +19,4 @@ enum Secret {
 - [x] 自身のRepository一覧を表示する
 - [x] Repositoryを検索できる
 - [x] 選択したRepositoryの内容を表示する
+- [ ] Apolloをアプリから分離する
