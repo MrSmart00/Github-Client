@@ -25,6 +25,7 @@ public enum GraphQL {
               resourcePath
               isPrivate
               updatedAt
+              url
               languages(first: 1, orderBy: {field: SIZE, direction: DESC}) {
                 __typename
                 nodes {
@@ -187,6 +188,7 @@ public enum GraphQL {
               GraphQLField("resourcePath", type: .nonNull(.scalar(String.self))),
               GraphQLField("isPrivate", type: .nonNull(.scalar(Bool.self))),
               GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
+              GraphQLField("url", type: .nonNull(.scalar(String.self))),
               GraphQLField("languages", arguments: ["first": 1, "orderBy": ["field": "SIZE", "direction": "DESC"]], type: .object(Language.selections)),
             ]
 
@@ -196,8 +198,8 @@ public enum GraphQL {
               self.resultMap = unsafeResultMap
             }
 
-            public init(id: GraphQLID, name: String, resourcePath: String, isPrivate: Bool, updatedAt: String, languages: Language? = nil) {
-              self.init(unsafeResultMap: ["__typename": "Repository", "id": id, "name": name, "resourcePath": resourcePath, "isPrivate": isPrivate, "updatedAt": updatedAt, "languages": languages.flatMap { (value: Language) -> ResultMap in value.resultMap }])
+            public init(id: GraphQLID, name: String, resourcePath: String, isPrivate: Bool, updatedAt: String, url: String, languages: Language? = nil) {
+              self.init(unsafeResultMap: ["__typename": "Repository", "id": id, "name": name, "resourcePath": resourcePath, "isPrivate": isPrivate, "updatedAt": updatedAt, "url": url, "languages": languages.flatMap { (value: Language) -> ResultMap in value.resultMap }])
             }
 
             public var __typename: String {
@@ -255,6 +257,16 @@ public enum GraphQL {
               }
               set {
                 resultMap.updateValue(newValue, forKey: "updatedAt")
+              }
+            }
+
+            /// The HTTP URL for this repository
+            public var url: String {
+              get {
+                return resultMap["url"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "url")
               }
             }
 
@@ -375,6 +387,7 @@ public enum GraphQL {
               resourcePath
               isPrivate
               updatedAt
+              url
               languages(first: 1, orderBy: {field: SIZE, direction: DESC}) {
                 __typename
                 nodes {
@@ -385,6 +398,7 @@ public enum GraphQL {
               }
               owner {
                 __typename
+                id
                 avatarUrl(size: 120)
                 login
               }
@@ -514,8 +528,8 @@ public enum GraphQL {
             return Node(unsafeResultMap: ["__typename": "User"])
           }
 
-          public static func makeRepository(id: GraphQLID, name: String, resourcePath: String, isPrivate: Bool, updatedAt: String, languages: AsRepository.Language? = nil, owner: AsRepository.Owner) -> Node {
-            return Node(unsafeResultMap: ["__typename": "Repository", "id": id, "name": name, "resourcePath": resourcePath, "isPrivate": isPrivate, "updatedAt": updatedAt, "languages": languages.flatMap { (value: AsRepository.Language) -> ResultMap in value.resultMap }, "owner": owner.resultMap])
+          public static func makeRepository(id: GraphQLID, name: String, resourcePath: String, isPrivate: Bool, updatedAt: String, url: String, languages: AsRepository.Language? = nil, owner: AsRepository.Owner) -> Node {
+            return Node(unsafeResultMap: ["__typename": "Repository", "id": id, "name": name, "resourcePath": resourcePath, "isPrivate": isPrivate, "updatedAt": updatedAt, "url": url, "languages": languages.flatMap { (value: AsRepository.Language) -> ResultMap in value.resultMap }, "owner": owner.resultMap])
           }
 
           public var __typename: String {
@@ -548,6 +562,7 @@ public enum GraphQL {
               GraphQLField("resourcePath", type: .nonNull(.scalar(String.self))),
               GraphQLField("isPrivate", type: .nonNull(.scalar(Bool.self))),
               GraphQLField("updatedAt", type: .nonNull(.scalar(String.self))),
+              GraphQLField("url", type: .nonNull(.scalar(String.self))),
               GraphQLField("languages", arguments: ["first": 1, "orderBy": ["field": "SIZE", "direction": "DESC"]], type: .object(Language.selections)),
               GraphQLField("owner", type: .nonNull(.object(Owner.selections))),
             ]
@@ -558,8 +573,8 @@ public enum GraphQL {
               self.resultMap = unsafeResultMap
             }
 
-            public init(id: GraphQLID, name: String, resourcePath: String, isPrivate: Bool, updatedAt: String, languages: Language? = nil, owner: Owner) {
-              self.init(unsafeResultMap: ["__typename": "Repository", "id": id, "name": name, "resourcePath": resourcePath, "isPrivate": isPrivate, "updatedAt": updatedAt, "languages": languages.flatMap { (value: Language) -> ResultMap in value.resultMap }, "owner": owner.resultMap])
+            public init(id: GraphQLID, name: String, resourcePath: String, isPrivate: Bool, updatedAt: String, url: String, languages: Language? = nil, owner: Owner) {
+              self.init(unsafeResultMap: ["__typename": "Repository", "id": id, "name": name, "resourcePath": resourcePath, "isPrivate": isPrivate, "updatedAt": updatedAt, "url": url, "languages": languages.flatMap { (value: Language) -> ResultMap in value.resultMap }, "owner": owner.resultMap])
             }
 
             public var __typename: String {
@@ -617,6 +632,16 @@ public enum GraphQL {
               }
               set {
                 resultMap.updateValue(newValue, forKey: "updatedAt")
+              }
+            }
+
+            /// The HTTP URL for this repository
+            public var url: String {
+              get {
+                return resultMap["url"]! as! String
+              }
+              set {
+                resultMap.updateValue(newValue, forKey: "url")
               }
             }
 
@@ -732,6 +757,7 @@ public enum GraphQL {
 
               public static let selections: [GraphQLSelection] = [
                 GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+                GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
                 GraphQLField("avatarUrl", arguments: ["size": 120], type: .nonNull(.scalar(String.self))),
                 GraphQLField("login", type: .nonNull(.scalar(String.self))),
               ]
@@ -742,12 +768,12 @@ public enum GraphQL {
                 self.resultMap = unsafeResultMap
               }
 
-              public static func makeOrganization(avatarUrl: String, login: String) -> Owner {
-                return Owner(unsafeResultMap: ["__typename": "Organization", "avatarUrl": avatarUrl, "login": login])
+              public static func makeOrganization(id: GraphQLID, avatarUrl: String, login: String) -> Owner {
+                return Owner(unsafeResultMap: ["__typename": "Organization", "id": id, "avatarUrl": avatarUrl, "login": login])
               }
 
-              public static func makeUser(avatarUrl: String, login: String) -> Owner {
-                return Owner(unsafeResultMap: ["__typename": "User", "avatarUrl": avatarUrl, "login": login])
+              public static func makeUser(id: GraphQLID, avatarUrl: String, login: String) -> Owner {
+                return Owner(unsafeResultMap: ["__typename": "User", "id": id, "avatarUrl": avatarUrl, "login": login])
               }
 
               public var __typename: String {
@@ -756,6 +782,15 @@ public enum GraphQL {
                 }
                 set {
                   resultMap.updateValue(newValue, forKey: "__typename")
+                }
+              }
+
+              public var id: GraphQLID {
+                get {
+                  return resultMap["id"]! as! GraphQLID
+                }
+                set {
+                  resultMap.updateValue(newValue, forKey: "id")
                 }
               }
 

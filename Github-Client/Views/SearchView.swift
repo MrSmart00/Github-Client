@@ -22,9 +22,11 @@ struct SearchView: View {
                         }
                         self.interactor.fetch(keyword: $0)
                     }
-                List(interactor.results) {
-                    RepositoryCell(repository: $0)
-                        .frame(height: 90.0)
+                List(interactor.results) { repository in
+                    NavigationLink(destination: WebView(url: repository.url, title: repository.name)) {
+                        RepositoryCell(repository: repository)
+                            .frame(height: 90.0)
+                    }
                 }
                 .navigationBarTitle(Text("Search Repository"))
             }

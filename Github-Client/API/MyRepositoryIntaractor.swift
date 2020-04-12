@@ -55,7 +55,8 @@ extension MyRepositoryInteractor {
                          isPrivate: node.isPrivate,
                          updateAt: convert(node.updatedAt),
                          language: node.languages?.nodes?.first?.flatMap(convert),
-                         path: node.resourcePath)
+                         path: node.resourcePath,
+                         url: URL(string: node.url)!)
         }
 
         static func convert(_ node: GraphQL.MyRepositoriesQuery.Data.Viewer.Repository.Node.Language.Node) -> Language {

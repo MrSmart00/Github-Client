@@ -13,9 +13,11 @@ struct RepositoryList: View {
 
     var body: some View {
         NavigationView {
-            List(interactor.viewer?.repositories ?? []) {
-                RepositoryCell(repository: $0)
-                    .frame(height: 90.0)
+            List(interactor.viewer?.repositories ?? []) { repository in
+                NavigationLink(destination: WebView(url: repository.url, title: repository.name)) {
+                    RepositoryCell(repository: repository)
+                        .frame(height: 90.0)
+                }
             }
             .onAppear { UITableView.appearance().separatorColor = .clear }
             .onDisappear { UITableView.appearance().separatorStyle = .singleLine }

@@ -15,6 +15,7 @@ struct Repository: Hashable, Identifiable, Equatable {
     let updateAt: Date
     let language: Language?
     let path: String
+    let url: URL
 
     var updateText: String {
         let formatter: DateFormatter = DateFormatter()

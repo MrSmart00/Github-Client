@@ -28,6 +28,7 @@
 		C47E92FA243E147900B1D9BD /* Github_ClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47E92F9243E147900B1D9BD /* Github_ClientTests.swift */; };
 		C47E9306243E182000B1D9BD /* Apollo in Frameworks */ = {isa = PBXBuildFile; productRef = C47E9305243E182000B1D9BD /* Apollo */; };
 		C48C05652440FB42008EF81B /* RepositoryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C48C05642440FB42008EF81B /* RepositoryList.swift */; };
+		C4F3A8B82442EEA9001EB841 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F3A8B72442EEA9001EB841 /* WebView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		C47E92F9243E147900B1D9BD /* Github_ClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Github_ClientTests.swift; sourceTree = "<group>"; };
 		C47E92FB243E147900B1D9BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C48C05642440FB42008EF81B /* RepositoryList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryList.swift; sourceTree = "<group>"; };
+		C4F3A8B72442EEA9001EB841 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				C40D04F224421FD700063037 /* Tabbar.swift */,
 				C40D04F42442217C00063037 /* SearchView.swift */,
 				C40D04F62442236100063037 /* SearchBar.swift */,
+				C4F3A8B72442EEA9001EB841 /* WebView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				C40D04F72442236100063037 /* SearchBar.swift in Sources */,
 				C40272FE243F82D50036541F /* Secret.swift in Sources */,
 				C40D04F9244226E100063037 /* SearchInteractor.swift in Sources */,
+				C4F3A8B82442EEA9001EB841 /* WebView.swift in Sources */,
 				C40D04F52442217C00063037 /* SearchView.swift in Sources */,
 				C45195AD2441F0FA00C80532 /* Viewer.swift in Sources */,
 				C46B98AC243F6C47005C3ADD /* GraphQL.swift in Sources */,

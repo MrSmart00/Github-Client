@@ -45,7 +45,8 @@ extension SearchInteractor {
                          isPrivate: repository.isPrivate,
                          updateAt: convert(repository.updatedAt),
                          language: repository.languages?.nodes?.first?.flatMap(convert),
-                         path: repository.resourcePath)
+                         path: repository.resourcePath,
+                         url: URL(string: repository.url)!)
         }
 
         static func convert(_ node: GraphQL.SearchRepositoryQuery.Data.Search.Node.AsRepository.Language.Node) -> Language {
