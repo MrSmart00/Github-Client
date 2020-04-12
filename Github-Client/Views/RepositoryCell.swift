@@ -14,7 +14,7 @@ struct RepositoryCell: View {
     var body: some View {
         VStack(spacing: 3.0) {
             RoundedRectangle(cornerRadius: 10)
-                .fill(createGradient(colorInfo: repository.language?.color))
+                .fill(createGradient(colorInfo: repository.language?.color ?? .default))
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
@@ -48,16 +48,7 @@ struct RepositoryCell: View {
 
     }
 
-    private func createGradient(colorInfo: ColorInfo?) -> LinearGradient {
-        guard let colorInfo = colorInfo else {
-            return .init(
-                gradient: .init(
-                    colors: [
-                        Color(red: ColorInfo.default.red, green: ColorInfo.default.green, blue: ColorInfo.default.blue)
-                    ]),
-                startPoint: .leading,
-                endPoint: .trailing)
-        }
+    private func createGradient(colorInfo: ColorInfo) -> LinearGradient {
         return .init(
             gradient: .init(
                 colors: [
