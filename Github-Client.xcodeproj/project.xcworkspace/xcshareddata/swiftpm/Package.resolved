@@ -3,7 +3,7 @@
     "pins": [
       {
         "package": "Apollo",
-        "repositoryURL": "git@github.com:apollographql/apollo-ios.git",
+        "repositoryURL": "https://github.com/apollographql/apollo-ios.git",
         "state": {
           "branch": null,
           "revision": "44c6ae2313b7b9c2515a62492ff30f495e7fc98f",

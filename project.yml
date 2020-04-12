@@ -1,0 +1,26 @@
+name: Github-Client
+options:
+  bundleIdPrefix: jp.exam
+packages:
+  Apollo:
+    url: https://github.com/apollographql/apollo-ios.git
+    from: 0.20.0
+targets:
+  Github-Client:
+    type: application
+    platform: iOS
+    deploymentTarget: "13.0"
+    sources:
+      - Github-Client
+    dependencies:
+      - package: Apollo
+    settings:
+      base:
+        TARGETED_DEVICE_FAMILY: "1"  
+  Github-ClientTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - Github-ClientTests
+    dependencies:
+      - target: Github-Client
