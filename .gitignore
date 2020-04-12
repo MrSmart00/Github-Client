@@ -92,4 +92,4 @@ iOSInjectionProject/
 
 
 *.xcodeproj
-# *.Secret.swift
+*.Secret.swift
