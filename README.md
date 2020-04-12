@@ -5,7 +5,13 @@
 1. xcodegenのインストール
 2. `xcodegen generate` でプロジェクト生成
 3. Githubトークン作成
-4. Secret.swiftの `<YOUR_GITHUB_TOKEN>` を３で作成したトークンに変更
+4. Secret.swiftを作成プロジェクトに作成
+5. 以下のコードをSecret.swiftに追加し `YOUR_GITHUB_TOKEN` を3で作成したトークンに置換する
+```Secret.swift
+enum Secret {
+    static let githubToken = "<YOUR_GITHUB_TOKEN>"
+}
+```
 
 ## やった事
 
