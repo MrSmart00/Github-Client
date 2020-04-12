@@ -16,4 +16,4 @@ enum Secret {
 - [x] Github GraphQLから情報を取得する
 - [x] 自身のRepository一覧を表示する
 - [x] Repositoryを検索できる
-- [ ] 選択したRepositoryの内容を表示する
+- [x] 選択したRepositoryの内容を表示する
