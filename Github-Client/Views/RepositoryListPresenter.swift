@@ -1,5 +1,5 @@
 //
-//  RepositoryListViewModel.swift
+//  RepositoryListPresenter.swift
 //  Github-Client
 //
 //  Created by 日野森寛也 on 2020/04/18.
@@ -16,7 +16,7 @@ protocol RepositoryListPresentation: ObservableObject {
     func start()
 }
 
-class RepositoryListViewModel<Usecase: MyRepositoryUsecase>: RepositoryListPresentation {
+class RepositoryListPresenter<Usecase: MyRepositoryUsecase>: RepositoryListPresentation {
     @ObservedObject private var usecase: Usecase
     @Published var results: [Repository] = []
     @Published var name: String = ""
