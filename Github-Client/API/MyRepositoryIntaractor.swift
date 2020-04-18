@@ -10,11 +10,11 @@ import Foundation
 import Apollo
 import Combine
 
-protocol MyRepositoryUsecase: ObservableObject {
+protocol RepositoryUsecase: ObservableObject {
     func fetch() -> Future<Viewer, Never>
 }
 
-class MyRepositoryInteractor: MyRepositoryUsecase {
+class MyRepositoryInteractor: RepositoryUsecase {
     private let apollo: ApolloClient = {
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(Secret.githubToken)"]

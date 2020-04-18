@@ -16,7 +16,7 @@ protocol RepositoryListPresentation: ObservableObject {
     func start()
 }
 
-class RepositoryListPresenter<Usecase: MyRepositoryUsecase>: RepositoryListPresentation {
+class RepositoryListPresenter<Usecase: RepositoryUsecase>: RepositoryListPresentation {
     @ObservedObject private var usecase: Usecase
     @Published var results: [Repository] = []
     @Published var name: String = ""
