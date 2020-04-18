@@ -11,7 +11,7 @@ import SwiftUI
 struct Tabbar: View {
     var body: some View {
         TabView {
-            RepositoryList<RepositoryListPresenter<MyRepositoryInteractor>>(presenter: RepositoryListPresenter<MyRepositoryInteractor>(usecase: .init()))
+            RepositoryList<RepositoryListPresenter<MyRepositoryInteractor>>(presentation: RepositoryListPresenter<MyRepositoryInteractor>(usecase: .init()))
                 .tabItem {
                     VStack {
                         Text("My Repository")
