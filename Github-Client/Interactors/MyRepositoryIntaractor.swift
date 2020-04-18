@@ -15,10 +15,8 @@ class MyRepositoryInteractor: RepositoryUsecase {
     private let apollo: ApolloClient = {
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(Secret.githubToken)"]
-        let url = URL(string: "https://api.github.com/graphql")!
-        let transport = HTTPNetworkTransport(url: url,
-                                             session: .init(configuration: configuration))
-        return .init(networkTransport: transport)
+        return .init(networkTransport: HTTPNetworkTransport(url: URL(string: "https://api.github.com/graphql")!,
+                                                            session: .init(configuration: configuration)))
     }()
 
     func fetch() -> Future<Viewer, Never> {
