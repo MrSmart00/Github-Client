@@ -8,11 +8,7 @@
 import Foundation
 import SwiftUI
 import Combine
-
-protocol SearchPresentation: ObservableObject {
-    var results: [Repository] { get }
-    func start(keyward: String)
-}
+import Domain
 
 class SearchPresenter<Usecase: SearchUsecase>: SearchPresentation {
     @ObservedObject private var usecase: Usecase

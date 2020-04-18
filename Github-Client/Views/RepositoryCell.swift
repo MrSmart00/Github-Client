@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Domain
 
 struct RepositoryCell: View {
     let repository: Repository

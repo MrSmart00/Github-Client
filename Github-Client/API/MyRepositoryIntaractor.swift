@@ -9,10 +9,7 @@
 import Foundation
 import Apollo
 import Combine
-
-protocol RepositoryUsecase: ObservableObject {
-    func fetch() -> Future<Viewer, Never>
-}
+import Domain
 
 class MyRepositoryInteractor: RepositoryUsecase {
     private let apollo: ApolloClient = {

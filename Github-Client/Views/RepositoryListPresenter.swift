@@ -8,13 +8,7 @@
 import Foundation
 import SwiftUI
 import Combine
-
-protocol RepositoryListPresentation: ObservableObject {
-    var results: [Repository] { get }
-    var name: String { get }
-    var avaterImageURL: URL? { get }
-    func start()
-}
+import Domain
 
 class RepositoryListPresenter<Usecase: RepositoryUsecase>: RepositoryListPresentation {
     @ObservedObject private var usecase: Usecase

@@ -9,10 +9,7 @@
 import Foundation
 import Apollo
 import Combine
-
-protocol SearchUsecase: ObservableObject {
-    func fetch(keyword: String) -> Future<[Repository], Never>
-}
+import Domain
 
 class SearchInteractor: SearchUsecase {
     private let apollo: ApolloClient = {

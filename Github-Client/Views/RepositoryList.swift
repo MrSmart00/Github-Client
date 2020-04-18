@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Domain
 
 struct RepositoryList<Presentation: RepositoryListPresentation>: View {
     @ObservedObject var presentation: Presentation

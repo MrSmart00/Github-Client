@@ -14,6 +14,7 @@ targets:
       - Github-Client
     dependencies:
       - package: Apollo
+      - target: Domain
     settings:
       base:
         TARGETED_DEVICE_FAMILY: "1"  
@@ -24,3 +25,16 @@ targets:
       - Github-ClientTests
     dependencies:
       - target: Github-Client
+  Domain:
+    type: framework
+    platform: iOS
+    deploymentTarget: "13.0"
+    sources:
+      - Domain
+  DomainTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - DomainTests
+    dependencies:
+      - target: Domain

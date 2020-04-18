@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Domain
 
 struct SearchView<Presentation: SearchPresentation>: View {
     @State private var searchText : String = ""
