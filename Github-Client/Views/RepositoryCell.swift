@@ -23,7 +23,9 @@ struct RepositoryCell: View {
                             VStack(alignment: .leading, spacing: 3.0) {
                                 HStack {
                                     Text(repository.name)
-                                        .font(.title)
+                                        .font(.system(size: 28,
+                                                      weight: .bold,
+                                                      design: .rounded))
                                     Spacer()
                                 }
                                 HStack(alignment: .center) {
@@ -63,7 +65,7 @@ struct RepositoryCell: View {
                           blue: ColorInfo.default.blue,
                           opacity: 0.5)
                 ]),
-            startPoint: .leading,
+            startPoint: .trailing,
             endPoint: .center)
     }
 }
@@ -75,14 +77,20 @@ struct RepositoryCell_Previews: PreviewProvider {
                                              name: "Github-Client",
                                              isPrivate: false,
                                              updateAt: Date(),
-                                             language: .init(name: "Swift", color: .init(red: 0.3, green: 0.5, blue: 0.7)),
+                                             language: .init(name: "Swift",
+                                                             color: .init(red: 0.3,
+                                                                          green: 0.5,
+                                                                          blue: 0.7)),
                                              path: "/MrSmart00/Github-Client",
                                              url: URL(string: "https://www.apple.com/jp/")!))
             RepositoryCell(repository: .init(id: "",
                                              name: "swift",
                                              isPrivate: false,
                                              updateAt: Date(),
-                                             language: .init(name: "C++", color: .init(red: 1, green: 1, blue: 1)),
+                                             language: .init(name: "C++",
+                                                             color: .init(red: 1,
+                                                                          green: 1,
+                                                                          blue: 1)),
                                              path: "/apple/swift",
                                              url: URL(string: "https://www.apple.com/jp/")!))
 
