@@ -9,20 +9,27 @@ import Foundation
 import SwiftUI
 import Combine
 
-class RepositoryListViewModel: ObservableObject {
-    @ObservedObject private var interactor: MyRepositoryInteractor
+protocol RepositoryListPresentation: ObservableObject {
+    var results: [Repository] { get }
+    var name: String { get }
+    var avaterImageURL: URL? { get }
+    func start()
+}
+
+class RepositoryListViewModel<Usecase: MyRepositoryUsecase>: RepositoryListPresentation {
+    @ObservedObject private var usecase: Usecase
     @Published var results: [Repository] = []
     @Published var name: String = ""
     @Published var avaterImageURL: URL? = nil
 
     private var cancellables: [AnyCancellable] = []
 
-    init(interactor: MyRepositoryInteractor) {
-        self.interactor = interactor
+    init(usecase: Usecase) {
+        self.usecase = usecase
     }
 
-    func fetch() {
-        interactor
+    func start() {
+        usecase
             .fetch()
             .sink { [weak self] in
                 self?.results = $0.repositories
