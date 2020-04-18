@@ -13,7 +13,7 @@ targets:
     sources:
       - Github-Client
     dependencies:
-      - package: Apollo
+      - target: API
       - target: Domain
     settings:
       base:
@@ -25,12 +25,24 @@ targets:
       - Github-ClientTests
     dependencies:
       - target: Github-Client
+  API:
+    type: framework
+    platform: iOS
+    deploymentTarget: "13.0"
+    sources:
+      - API
+    dependencies:
+      - package: Apollo
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: "jp.exam.Github-Client.API"
   Domain:
     type: framework
     platform: iOS
     deploymentTarget: "13.0"
     sources:
       - Domain
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: "jp.exam.Github-Client.Domain"  
   DomainTests:
     type: bundle.unit-test
     platform: iOS

@@ -8,6 +8,6 @@
 import Foundation
 import Combine
 
-public protocol SearchUsecase: ObservableObject {
+public protocol SearchUsecase {
     func fetch(keyword: String) -> Future<[Repository], Never>
 }

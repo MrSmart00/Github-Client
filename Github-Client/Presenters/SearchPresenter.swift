@@ -11,7 +11,7 @@ import Combine
 import Domain
 
 class SearchPresenter<Usecase: SearchUsecase>: SearchPresentation {
-    @ObservedObject private var usecase: Usecase
+    private var usecase: Usecase
     @Published var results: [Repository] = []
 
     private var cancellables: [AnyCancellable] = []

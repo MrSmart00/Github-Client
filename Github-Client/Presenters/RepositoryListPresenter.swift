@@ -11,7 +11,7 @@ import Combine
 import Domain
 
 class RepositoryListPresenter<Usecase: RepositoryUsecase>: RepositoryListPresentation {
-    @ObservedObject private var usecase: Usecase
+    private var usecase: Usecase
     @Published var results: [Repository] = []
     @Published var name: String = ""
     @Published var avaterImageURL: URL? = nil

@@ -7,21 +7,16 @@
 //
 
 import Foundation
-import Apollo
+import API
 import Combine
 import Domain
 
-class SearchInteractor: SearchUsecase {
-    private let apollo: ApolloClient = {
-        let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(Secret.githubToken)"]
-        return .init(networkTransport: HTTPNetworkTransport(url: URL(string: "https://api.github.com/graphql")!,
-                                                            session: .init(configuration: configuration)))
-    }()
+struct SearchInteractor: SearchUsecase {
+    private let client = Network.generateClient()
 
     func fetch(keyword: String) -> Future<[Repository], Never> {
-        return Future<[Repository], Never> { [unowned self] promise in
-            self.apollo.fetch(query: GraphQL.SearchRepositoryQuery(keyward: keyword, count: 50)) {
+        return Future<[Repository], Never> { promise in
+            self.client.fetch(query: GraphQL.SearchRepositoryQuery(keyward: keyword, count: 50)) {
                 guard case .success(let response) = $0, let nodes = response.data?.search.nodes else {
                     return
                 }

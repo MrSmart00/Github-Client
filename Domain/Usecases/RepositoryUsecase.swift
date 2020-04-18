@@ -8,6 +8,6 @@
 import Foundation
 import Combine
 
-public protocol RepositoryUsecase: ObservableObject {
+public protocol RepositoryUsecase {
     func fetch() -> Future<Viewer, Never>
 }

@@ -7,21 +7,16 @@
 //
 
 import Foundation
-import Apollo
+import API
 import Combine
 import Domain
 
-class MyRepositoryInteractor: RepositoryUsecase {
-    private let apollo: ApolloClient = {
-        let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(Secret.githubToken)"]
-        return .init(networkTransport: HTTPNetworkTransport(url: URL(string: "https://api.github.com/graphql")!,
-                                                            session: .init(configuration: configuration)))
-    }()
+struct MyRepositoryInteractor: RepositoryUsecase {
+    private let client = Network.generateClient()
 
     func fetch() -> Future<Viewer, Never> {
-        return Future<Viewer, Never> { [unowned self] promise in
-            self.apollo.fetch(query: GraphQL.MyRepositoriesQuery()) {
+        return Future<Viewer, Never> { promise in
+            self.client.fetch(query: GraphQL.MyRepositoriesQuery()) {
                 guard case .success(let response) = $0, let viewer = response.data?.viewer else {
                     return
                 }
