@@ -17,7 +17,7 @@ struct Tabbar: View {
                         Text("My Repository")
                     }
                 }
-            SearchView()
+            SearchView<SearchPresenter<SearchInteractor>>(presentation: .init(usecase: .init()))
                 .tabItem {
                     VStack {
                         Text("Search")

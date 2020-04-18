@@ -8,8 +8,13 @@
 
 import Foundation
 import Apollo
+import Combine
 
-class SearchInteractor: ObservableObject {
+protocol SearchUsecase: ObservableObject {
+    func fetch(keyword: String) -> Future<[Repository], Never>
+}
+
+class SearchInteractor: SearchUsecase {
     private let apollo: ApolloClient = {
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(Secret.githubToken)"]
@@ -28,6 +33,17 @@ class SearchInteractor: ObservableObject {
             }
             let compactedNodes = nodes.compactMap { $0 }
             self.results = Translator.convert(compactedNodes)
+        }
+    }
+
+    func fetch(keyword: String) -> Future<[Repository], Never> {
+        return Future<[Repository], Never> { [unowned self] promise in
+            self.apollo.fetch(query: GraphQL.SearchRepositoryQuery(keyward: keyword, count: 50)) {
+                guard case .success(let response) = $0, let nodes = response.data?.search.nodes else {
+                    return
+                }
+                promise(.success(Translator.convert(nodes.compactMap { $0 })))
+            }
         }
     }
 }
