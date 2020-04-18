@@ -8,6 +8,7 @@
 
 import Foundation
 import Apollo
+import Combine
 
 class MyRepositoryInteractor: ObservableObject {
     private let apollo: ApolloClient = {
@@ -19,18 +20,14 @@ class MyRepositoryInteractor: ObservableObject {
         return .init(networkTransport: transport)
     }()
 
-    @Published var viewer: Viewer? = nil
-
-    init() {
-        fetch()
-    }
-
-    func fetch() {
-        apollo.fetch(query: GraphQL.MyRepositoriesQuery()) {
-            guard case .success(let response) = $0, let viewer = response.data?.viewer else {
-                return
+    func fetch() -> Future<Viewer, Never> {
+        return Future<Viewer, Never> { [unowned self] promise in
+            self.apollo.fetch(query: GraphQL.MyRepositoriesQuery()) {
+                guard case .success(let response) = $0, let viewer = response.data?.viewer else {
+                    return
+                }
+                promise(.success(Translator.convert(viewer)))
             }
-            self.viewer = Translator.convert(viewer)
         }
     }
 }

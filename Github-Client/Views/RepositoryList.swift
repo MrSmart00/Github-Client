@@ -9,11 +9,11 @@
 import SwiftUI
 
 struct RepositoryList: View {
-    @ObservedObject var interactor = MyRepositoryInteractor()
+    @ObservedObject var viewModel: RepositoryListViewModel
 
     var body: some View {
         NavigationView {
-            List(interactor.viewer?.repositories ?? []) { repository in
+            List(viewModel.results) { repository in
                 NavigationLink(destination: WebView(url: repository.url, title: repository.name)) {
                     RepositoryCell(repository: repository)
                         .frame(height: 90.0)
@@ -22,17 +22,18 @@ struct RepositoryList: View {
             .onAppear { UITableView.appearance().separatorColor = .clear }
             .onDisappear { UITableView.appearance().separatorStyle = .singleLine }
             .navigationBarItems(
-                leading: NetworkImage(url: interactor.viewer?.avaterImageURL)
+                leading: NetworkImage(url: viewModel.avaterImageURL)
                     .frame(width: 32, height: 32)
                     .cornerRadius(22)
             )
-            .navigationBarTitle(Text(interactor.viewer?.name ?? "Hello, World!"))
+            .navigationBarTitle(Text(viewModel.name))
         }
+        .onAppear(perform: { self.viewModel.fetch() })
     }
 }
 
 struct RepositoryList_Previews: PreviewProvider {
     static var previews: some View {
-        RepositoryList()
+        RepositoryList(viewModel: .init(interactor: .init()))
     }
 }

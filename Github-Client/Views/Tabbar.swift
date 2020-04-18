@@ -11,7 +11,7 @@ import SwiftUI
 struct Tabbar: View {
     var body: some View {
         TabView {
-            RepositoryList()
+            RepositoryList(viewModel: .init(interactor: .init()))
                 .tabItem {
                     VStack {
                         Text("My Repository")
