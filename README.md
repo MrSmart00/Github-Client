@@ -1,5 +1,5 @@
 # Github-Client
-
+![Swift](https://github.com/MrSmart00/Github-Client/workflows/Swift/badge.svg)
 ## 準備
 
 1. xcodegenのインストール
