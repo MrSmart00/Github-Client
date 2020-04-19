@@ -18,6 +18,14 @@ jobs:
     - name: Generate Xcodegen
       run: xcodegen
     - name: Build
-      run: swift build -v
+      run: xcodebuild
+            -scheme Swift-github-actions
+            -sdk iphonesimulator
+            -configuration Debug
+            build
     - name: Run tests
-      run: swift test -v
+      run: xcodebuild
+            -scheme Swift-github-actions
+            -sdk iphonesimulator
+            -destination 'platform=iOS Simulator,name=iPhone 11 Pro Max'
+            clean test
