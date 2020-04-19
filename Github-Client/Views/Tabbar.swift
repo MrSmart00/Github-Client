@@ -11,13 +11,13 @@ import SwiftUI
 struct Tabbar: View {
     var body: some View {
         TabView {
-            RepositoryList()
+            RepositoryList<RepositoryListPresenter<MyRepositoryInteractor>>(presentation: RepositoryListPresenter<MyRepositoryInteractor>(usecase: .init()))
                 .tabItem {
                     VStack {
                         Text("My Repository")
                     }
                 }
-            SearchView()
+            SearchView<SearchPresenter<SearchInteractor>>(presentation: .init(usecase: .init()))
                 .tabItem {
                     VStack {
                         Text("Search")

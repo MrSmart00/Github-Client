@@ -7,13 +7,14 @@
 //
 
 import SwiftUI
+import Domain
 
-struct RepositoryList: View {
-    @ObservedObject var interactor = MyRepositoryInteractor()
+struct RepositoryList<Presentation: RepositoryListPresentation>: View {
+    @ObservedObject var presentation: Presentation
 
     var body: some View {
         NavigationView {
-            List(interactor.viewer?.repositories ?? []) { repository in
+            List(presentation.results) { repository in
                 NavigationLink(destination: WebView(url: repository.url, title: repository.name)) {
                     RepositoryCell(repository: repository)
                         .frame(height: 90.0)
@@ -22,17 +23,18 @@ struct RepositoryList: View {
             .onAppear { UITableView.appearance().separatorColor = .clear }
             .onDisappear { UITableView.appearance().separatorStyle = .singleLine }
             .navigationBarItems(
-                leading: NetworkImage(url: interactor.viewer?.avaterImageURL)
+                leading: NetworkImage(url: presentation.avaterImageURL)
                     .frame(width: 32, height: 32)
                     .cornerRadius(22)
             )
-            .navigationBarTitle(Text(interactor.viewer?.name ?? "Hello, World!"))
+            .navigationBarTitle(Text(presentation.name))
         }
+        .onAppear(perform: { self.presentation.start() })
     }
 }
 
 struct RepositoryList_Previews: PreviewProvider {
     static var previews: some View {
-        RepositoryList()
+        RepositoryList<RepositoryListPresenter<MyRepositoryInteractor>>(presentation: RepositoryListPresenter<MyRepositoryInteractor>(usecase: .init()))
     }
 }

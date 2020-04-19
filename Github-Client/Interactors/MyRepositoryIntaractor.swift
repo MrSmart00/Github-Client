@@ -7,30 +7,21 @@
 //
 
 import Foundation
-import Apollo
+import API
+import Combine
+import Domain
 
-class MyRepositoryInteractor: ObservableObject {
-    private let apollo: ApolloClient = {
-        let configuration = URLSessionConfiguration.default
-        configuration.httpAdditionalHeaders = ["Authorization": "Bearer \(Secret.githubToken)"]
-        let url = URL(string: "https://api.github.com/graphql")!
-        let transport = HTTPNetworkTransport(url: url,
-                                             session: .init(configuration: configuration))
-        return .init(networkTransport: transport)
-    }()
+struct MyRepositoryInteractor: RepositoryUsecase {
+    private let client = Network.generateClient()
 
-    @Published var viewer: Viewer? = nil
-
-    init() {
-        fetch()
-    }
-
-    func fetch() {
-        apollo.fetch(query: GraphQL.MyRepositoriesQuery()) {
-            guard case .success(let response) = $0, let viewer = response.data?.viewer else {
-                return
+    func fetch() -> Future<Viewer, Never> {
+        return Future<Viewer, Never> { promise in
+            self.client.fetch(query: GraphQL.MyRepositoriesQuery()) {
+                guard case .success(let response) = $0, let viewer = response.data?.viewer else {
+                    return
+                }
+                promise(.success(Translator.convert(viewer)))
             }
-            self.viewer = Translator.convert(viewer)
         }
     }
 }

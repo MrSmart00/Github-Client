@@ -15,6 +15,10 @@ jobs:
     - uses: actions/checkout@v2
     - name: Setup Project builds
       run: ./setup.sh
+    - name: Select Xcode version
+      run: sudo xcode-select -s '/Applications/Xcode_11.4.app/Contents/Developer'
+    - name: Show Xcode version
+      run: xcodebuild -version
     - name: Generate Xcodegen
       run: xcodegen
     - name: Build
