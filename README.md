@@ -20,3 +20,4 @@ enum Secret {
 - [x] Repositoryを検索できる
 - [x] 選択したRepositoryの内容を表示する
 - [x] Apolloをアプリから分離する
+- [x] Guthub Actionsを使ってCI環境構築
