@@ -13,8 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-#     - name: Setup Project builds
-#       run: ./setup.sh
+    - name: Setup Project builds
+      run: ./setup.sh
 #     - name: Generate Xcodegen
 #       run: xcodegen
     - name: Build
