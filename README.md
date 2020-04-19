@@ -8,7 +8,7 @@
 4. Secret.swiftをAPIフォルダに作成
 5. 以下のコードをSecret.swiftに追加し `YOUR_GITHUB_TOKEN` を3で作成したトークンに置換する
 ```Secret.swift
-enum Secret {
+public enum Secret {
     static let githubToken = "<YOUR_GITHUB_TOKEN>"
 }
 ```
