@@ -19,13 +19,13 @@ jobs:
       run: xcodegen
     - name: Build
       run: xcodebuild
-            -scheme Swift-github-actions
+            -scheme Github-Client
             -sdk iphonesimulator
             -configuration Debug
             build
     - name: Run tests
       run: xcodebuild
-            -scheme Swift-github-actions
+            -scheme Github-Client
             -sdk iphonesimulator
             -destination 'platform=iOS Simulator,name=iPhone 11 Pro Max'
             clean test
